@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ (C) Copyright 2010-2015 hSenid Mobile Solutions (Pvt) Limited.
+  ~ All Rights Reserved.
+  ~
+  ~ These materials are unpublished, proprietary, confidential source code of
+  ~ hSenid Mobile Solutions (Pvt) Limited and constitute a TRADE SECRET
+  ~ of hSenid Mobile Solutions (Pvt) Limited.
+  ~
+  ~ hSenid Mobile Solutions (Pvt) Limited retains all title to and intellectual
+  ~ property rights in these materials.
+  -->
+
+<Configuration status="WARN" monitorInterval="60">
+
+    <Properties>
+        <Property name="log-path">/webapps/logs/lab-genie</Property>
+        <Property name="log-pattern">%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level%x %c{1} [%t] - %msg%n</Property>
+        <Property name="audit-log-pattern">%d{yyyy-MM-dd HH:mm:ss.SSS} [%X{username}] %msg%n</Property>
+        <Property name="log-rotate-pattern">%d{yyyy-MM-dd}.log</Property>
+    </Properties>
+
+    <Appenders>
+
+        <Console name="console-log" target="SYSTEM_OUT">
+            <PatternLayout pattern="${log-pattern}"/>
+        </Console>
+
+        <RollingRandomAccessFile name="info-log" fileName="${log-path}/info.log"
+                                 filePattern="${log-path}/info-${log-rotate-pattern}">
+            <PatternLayout pattern="${log-pattern}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+            </Policies>
+            <DefaultRolloverStrategy max="7"/>
+        </RollingRandomAccessFile>
+
+        <RollingFile name="error-log" fileName="${log-path}/error.log"
+                     filePattern="${log-path}/error-${log-rotate-pattern}">
+            <PatternLayout pattern="${log-pattern}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+            </Policies>
+            <DefaultRolloverStrategy max="7"/>
+        </RollingFile>
+
+        <RollingFile name="audit-log" fileName="${log-path}/audit.log"
+                     filePattern="${log-path}/audit-${log-rotate-pattern}">
+            <PatternLayout pattern="${audit-log-pattern}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+            </Policies>
+            <DefaultRolloverStrategy max="7"/>
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <Logger name="hms" level="debug" additivity="false">
+            <appender-ref ref="trace-log" level="trace"/>
+            <appender-ref ref="info-log" level="info"/>
+            <appender-ref ref="error-log" level="error"/>
+            <appender-ref ref="console-log" level="trace"/>
+        </Logger>
+
+        <Logger name="EVENT_LOG" level="info" additivity="false">
+            <appender-ref ref="audit-log"/>
+        </Logger>
+
+        <Root level="info" additivity="false">
+            <!--<appender-ref ref="trace-log" level="trace"/>-->
+            <!--<appender-ref ref="info-log" level="info"/>-->
+            <!--<appender-ref ref="error-log" level="error"/>-->
+            <appender-ref ref="console-log" level="trace"/>
+        </Root>
+    </Loggers>
+
+</Configuration>
