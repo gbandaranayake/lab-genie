@@ -1,0 +1,9 @@
+#confirm-popover{
+    display : none;
+}
+
+.service-control-button{
+    border: none;
+    background: transparent;
+    outline : none;
+}

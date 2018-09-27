@@ -1,0 +1,23 @@
+.content{
+     margin-top: 150px;
+     margin-left: 100px;
+     width: 300px; 
+
+}
+
+.control-glyph {
+    float: right;
+    padding-left: 3;
+    color: #121FE6;
+}
+
+.control-button{
+    float: right;
+    border: none;
+    background: transparent;
+    outline : none;
+}
+
+.input-group .date-time {
+    display : none;
+}

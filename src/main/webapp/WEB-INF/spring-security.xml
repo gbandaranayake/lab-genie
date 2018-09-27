@@ -1,47 +1,47 @@
-<beans:beans xmlns="http://www.springframework.org/schema/security"
-             xmlns:beans="http://www.springframework.org/schema/beans"
-             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-             xsi:schemaLocation="http://www.springframework.org/schema/beans
-	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <import resource="datasources.xml"/>
+
+    <beans:beans xmlns="http://www.springframework.org/schema/security"
+                 xmlns:beans="http://www.springframework.org/schema/beans"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
 	http://www.springframework.org/schema/security
-	http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+	http://www.springframework.org/schema/security/spring-security-4.0.xsd">
 
-    <http pattern="/accessDenied.jsp" security="none"/>
+        <http auto-config="false">
+            <intercept-url pattern="/resources/bootstrap/**" access="permitAll"/>
+            <intercept-url pattern="/resources/images/icon-user-default.png" access="permitAll"/>
+            <intercept-url pattern="/resources/css/**" access="permitAll"/>
+            <intercept-url pattern="/index**" access="permitAll"/>
+            <intercept-url pattern="/**" access="hasRole('ROLE_USER')"/>
+            <access-denied-handler error-page="/index.html"/>
+            <form-login
+                    login-page="/index.html"
+                    authentication-failure-url="/index.html?error"
+                    always-use-default-target="true"
+                    default-target-url="/welcome.html"
+                    username-parameter="name"
+                    password-parameter="password"
+                    login-processing-url="/j_spring_security_check"/>
 
-    <!-- enable use-expressions -->
-    <http auto-config="true" use-expressions="true">
+            <logout logout-success-url="/index.html?logout"
+                    logout-url="/j_spring_security_logout"/>
+            <csrf disabled="true"/>
+        </http>
 
-        <intercept-url pattern="/admin**" access="hasRole('ROLE_ADMIN')" />
+        <authentication-manager>
+            <authentication-provider user-service-ref="userService" >
+                <password-encoder hash="bcrypt" />
+            </authentication-provider>
+        </authentication-manager>
 
-        <!-- access denied page -->
-        <access-denied-handler error-page="/403" />
+        <beans:bean id="userService" class="ruh.efac.lab.genie.service.UserDetailsService" p:userRepo-ref="userRepository"/>
+        <beans:bean id="userRepository" class="ruh.efac.lab.genie.repository.UserRepository" p:jdbcTemplate-ref="jdbcTemplate"/>
 
-        <form-login
-                login-page="/login"
-                default-target-url="/lab"
-                authentication-failure-url="/login?error"
-                username-parameter="username"
-                password-parameter="password" />
-        <logout logout-success-url="/login?logout"  />
-        <!-- enable csrf protection -->
-        <csrf/>
-    </http>
-
-    <authentication-manager alias="authenticationManager">
-        <authentication-provider>
-            <jdbc-user-service data-source-ref="dataSource"
-                                   users-by-username-query="select username,password, enabled from users where username=?"
-                                   authorities-by-username-query="select username, role from user_roles where username =?"/>
-        </authentication-provider>
-    </authentication-manager>
-
-    <!--<bean id="authenticationFailureHandler"
-          class="org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler">
-        <property name="defaultFailureUrl" beans:value="/accessDenied.jsp"/>
-    </bean>
-    <bean id="authenticationSuccessHandler"
-          class="org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler">
-        <property name="alwaysUseDefaultTargetUrl" beans:value="true"/>
-        <property name="defaultTargetUrl" beans:value="/"/>
-    </bean>-->
-</beans:beans>
+    </beans:beans>
+</beans>
