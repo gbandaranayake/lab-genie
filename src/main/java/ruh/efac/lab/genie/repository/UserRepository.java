@@ -16,8 +16,8 @@ package ruh.efac.lab.genie.repository;
  */
 
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.security.crypto.bcrypt.BCrypt;
 import ruh.efac.lab.genie.domain.User;
+import ruh.efac.lab.genie.domain.UserRole;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -28,7 +28,18 @@ public class UserRepository {
 
     public User getByName(String userName) {
         List<User> users = jdbcTemplate.query("select * from users where name=?", this::createUser, userName);
-        return users.size() > 0 ? users.get(0) : null;
+        User user = users.get(0);
+        if (user == null) {
+            return null;
+        }
+        user.setUserRole(getUserRolesForUser(user));
+        return  user;
+    }
+
+    public List<UserRole> getUserRolesForUser(User user) {
+        List<UserRole> userRoles = jdbcTemplate.query("select * from user_role where name=?", this::createUserRole,
+                user.getName());
+        return userRoles;
     }
 
     public List<User> getAllUsers() {
@@ -48,6 +59,11 @@ public class UserRepository {
         user.setPassword(resultSet.getString("password"));
         return user;
     }
+
+    private UserRole createUserRole(ResultSet resultSet, int rowNum) throws SQLException {
+        return new UserRole(null, resultSet.getString("role"));
+    }
+
 
     public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;

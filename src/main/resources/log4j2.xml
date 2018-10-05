@@ -14,7 +14,7 @@
 <Configuration status="WARN" monitorInterval="60">
 
     <Properties>
-        <Property name="log-path">/webapps/logs/lab-genie</Property>
+        <Property name="log-path">/hms/logs/lab-genie</Property>
         <Property name="log-pattern">%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level%x %c{1} [%t] - %msg%n</Property>
         <Property name="audit-log-pattern">%d{yyyy-MM-dd HH:mm:ss.SSS} [%X{username}] %msg%n</Property>
         <Property name="log-rotate-pattern">%d{yyyy-MM-dd}.log</Property>

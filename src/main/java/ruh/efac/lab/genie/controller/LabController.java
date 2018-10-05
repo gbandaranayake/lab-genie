@@ -18,7 +18,7 @@ public class LabController {
     @RequestMapping("/lab")
     public ModelAndView openEditSourceConfigurationPage() {
         logger.info("Request received to open the laboratory view page");
-        return new ModelAndView("index", Collections.emptyMap());
+        return new ModelAndView("welcome", Collections.emptyMap());
     }
 
 }

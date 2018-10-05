@@ -16,8 +16,9 @@ package ruh.efac.lab.genie.domain;
  */
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 public class User implements Serializable {
 
@@ -29,7 +30,7 @@ public class User implements Serializable {
 
     private boolean enabled = true;
 
-    private Set<UserRole> userRole = new HashSet<>();
+    private List<UserRole> userRole = new ArrayList<>();
 
     public Integer getId() {
         return id;
@@ -66,11 +67,11 @@ public class User implements Serializable {
     }
 
 
-    public Set<UserRole> getUserRole() {
+    public List<UserRole> getUserRole() {
         return userRole;
     }
 
-    public void setUserRole(Set<UserRole> userRole) {
+    public void setUserRole(List<UserRole> userRole) {
         this.userRole = userRole;
     }
 }

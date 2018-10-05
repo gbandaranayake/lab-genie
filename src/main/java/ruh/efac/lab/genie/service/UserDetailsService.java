@@ -24,7 +24,6 @@ import ruh.efac.lab.genie.domain.UserRole;
 import ruh.efac.lab.genie.repository.UserRepository;
 
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 public class UserDetailsService implements org.springframework.security.core.userdetails.UserDetailsService {
@@ -36,7 +35,7 @@ public class UserDetailsService implements org.springframework.security.core.use
         return convertDomainUserTypeToSpringUserType(user, getUserAuthorities(user.getUserRole()));
     }
 
-    private List<GrantedAuthority> getUserAuthorities(Set<UserRole> userRoles) {
+    private List<GrantedAuthority> getUserAuthorities(List<UserRole> userRoles) {
         return userRoles.stream().map(ur -> new SimpleGrantedAuthority(ur.getRole())).collect(Collectors.toList());
     }
 

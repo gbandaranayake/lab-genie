@@ -24,7 +24,7 @@
                     login-page="/index.html"
                     authentication-failure-url="/index.html?error"
                     always-use-default-target="true"
-                    default-target-url="/welcome.html"
+                    default-target-url="/lab.html"
                     username-parameter="name"
                     password-parameter="password"
                     login-processing-url="/j_spring_security_check"/>
