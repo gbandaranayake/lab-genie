@@ -28,12 +28,15 @@ public class LoginController {
                        @RequestParam(value = "logout", required = false) String message, Model model) {
 
 
-        if (error != null && !error.isEmpty()) {
+        if ("access_denied".equals(error)) {
+            model.addAttribute("error", "You have to login first!");
+        }
+        if (error != null) {
             model.addAttribute("error", "Username or password Invalid!");
         }
         if (message != null) {
             model.addAttribute("message", "Logout Successful");
         }
-        return "index";
+        return "welcome";
     }
 }
