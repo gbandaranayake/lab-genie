@@ -27,7 +27,7 @@ public class User implements Serializable {
 
     private  String password;
 
-    private boolean enabled;
+    private boolean enabled = true;
 
     private Set<UserRole> userRole = new HashSet<>();
 
