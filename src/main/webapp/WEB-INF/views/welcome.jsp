@@ -90,34 +90,20 @@
         </div>
     </section>
 
-    <div class="container-fluid">
-        <table class="table">
+    <div class="container-fluid" id="search-results">
+        <table class="table" id="search-results-table">
             <thead class="thead-light">
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
+                <th scope="col">Serial No</th>
+                <th scope="col">Item</th>
+                <th scope="col">Brand</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
+            <tr id="dummy-table-row"  style="display:none">
+                <td id="s-no">Mark</td>
+                <td id="item-name">Otto</td>
+                <td id="item-brand">@mdo</td>
             </tr>
             </tbody>
         </table>
