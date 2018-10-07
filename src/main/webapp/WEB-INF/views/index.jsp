@@ -5,8 +5,8 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/bootstrap/css/bootstrap.css"/>"/>
-    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/bootstrap/css/bootstrap-theme.css.map"/>">
-    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/bootstrap/css/bootstrap-theme.css"/>">
+    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/bootstrap/css/bootstrap-grid.css"/>">
+    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/bootstrap/css/bootstrap-reboot.css"/>">
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/login.css"/>">
 </head>
 <title>Log in</title>
@@ -66,7 +66,7 @@
                         </form>
                     </div>
                     <div class="panel-footer ">
-                        Forgot Password? <a href="#" onClick=""> Rest here.
+                        Forgot Password? <a href="#" onClick=""> Rest here.</a>
                     </div>
                 </div>
             </div>

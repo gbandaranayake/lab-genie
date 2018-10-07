@@ -2,78 +2,136 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/bootstrap/css/bootstrap.css"/>"/>
-    <link rel="stylesheet" type="text/css"
-          href="<c:url value="/resources/bootstrap/css/bootstrap-theme.css.map"/>">
+    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/bootstrap/css/bootstrap-grid.css"/>"/>
+    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/bootstrap/css/bootstrap-reboot.css"/>"/>
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/dashboard.css"/>"/>
-    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/bootstrap/css/bootstrap-theme.css"/>">
-    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/login.css"/>">
-    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/jquery.datetimepicker.min.css"/>">
-    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/main.css"/>">
+    <script src="<c:url value="/resources/javascript/jquery-3.3.1.js"/> "></script>
+    <script src="<c:url value="/resources/bootstrap/js/popper.js"/> "></script>
+    <script src="<c:url value="/resources/bootstrap/js/bootstrap.js"/> "></script>
+    <script src="<c:url value="/resources/bootstrap/js/bootstrap.bundle.js"/> "></script>
+    <script src="<c:url value="/resources/bootstrap/js/holder.min.js"/> "></script>
     <script src="<c:url value="/resources/javascript/d3.js"/> "></script>
-    <script src="<c:url value="/resources/javascript/jquery-1.11.2.js"/> "></script>
-    <script src="<c:url value="/resources/javascript/jquery.datetimepicker.full.min.js"/> "></script>
     <script src="<c:url value="/resources/javascript/components/dashboard.js"/> "></script>
+    <title>Lab Genie</title>
 </head>
-<title>Dash Board</title>
 <body>
-<jsp:include page="header.jsp"/>
-<div id="content" class="content"></div>
 
-<div class="popup">
-    <div class="header">
-        <div class="header-content">Start Cloud Instance</div>
-        <div class="close-icon"><i class="fa fa-close"></i> </div>
-    </div>
-    <div class="body">
-        <div class="body-content">
-
-            <form>
-                <div class="form-group">
-                    <div class="control-group">
-                <div class="radio-inline">
-                    <label class="radio-inline control-label"><input type="radio" class="radio-inline" name="optradio">Run till stopped</label>
+<header>
+    <div class="collapse bg-dark" id="navbarHeader">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-md-7 py-4">
+                    <h4 class="text-white">Lab Genie</h4>
+                    <p class="text-muted">Add some information about the album below, the author, or any other
+                        background context. Make it a few sentences long so folks can pick up some informative tidbits.
+                        Then, link them off to some social networking sites or contact information.</p>
                 </div>
-                <div class="radio-inline">
-                    <label class="radio-inline control-label"><input type="radio" class="radio-inline" name="optradio">Run till timeout</label>
+                <div class="col-sm-4 offset-md-1 py-4">
+                    <h4 class="text-white">Actions</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">View Laboratory Inventory</a></li>
+                        <li><a href="#" class="text-white">Upload Instrument Details</a></li>
+                        <li><a href="#" class="text-white">View Reports</a></li>
+                    </ul>
                 </div>
-                <div class="radio-inline">
-                    <label class="radio-inline control-label"><input id = "lease" type="radio" class="radio-inline" name="optradio">Lease runtime</label>
-                </div>
-                        </div>
-                </div>
-                <div class="input-group date-time" >
-                <span class="glyphicon-calendar glyphicon input-group-addon"></span>
-                <input id="timeFrameStartDate"
-                            class="form-control"/>
-                </div>
-            </form>
-
-
+            </div>
         </div>
     </div>
-    <div class="footer">
-        <div class="footer-content"><button id="cancel">Cancel</button><button id="save">Start</button> </div>
-    </div>
-</div>
-
-
-<div class="popup" id="popover">
-    <div class="header">
-        <div class="header-content">Instance Events</div>
-        <div class="close-icon"><i class="fa fa-close"></i> </div>
-    </div>
-    <div class="body">
-        <div class="body-content" id="popover-body">
+    <div class="navbar navbar-dark bg-dark shadow-sm">
+        <div class="container d-flex justify-content-between">
+            <a href="#" class="navbar-brand d-flex align-items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2">
+                    <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                    <circle cx="12" cy="13" r="4"></circle>
+                </svg>
+                <strong>Lab Genie</strong>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader"
+                    aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
         </div>
     </div>
-    <div class="footer" id="popover-footer">
-        <div class="footer-content"><button id="cancel-popover">Cancel</button></div>
+</header>
+
+<main role="main">
+
+    <section class="jumbotron text-left">
+        <div class="container">
+            <div class="row">
+                <div class="dropdown col-sm-4">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Select Laboratory
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Lab 1</a>
+                        <a class="dropdown-item" href="#">Lab 2</a>
+                        <a class="dropdown-item" href="#">Lab 3</a>
+                    </div>
+                </div>
+                <div class="input-group col-sm-8">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Instrument Name:</span>
+                    </div>
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+            <div class="mt-2">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item active" aria-current="page">Name Of Lab</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+    <div class="container-fluid">
+        <table class="table">
+            <thead class="thead-light">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Handle</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+            </tr>
+            </tbody>
+        </table>
     </div>
-</div>
-<script type="text/javascript" language="JavaScript">
-    $(function () {
-        $("#timeFrameStartDate").datetimepicker();
-    });
-</script>
+
+<footer class="text-muted">
+    <div class="container">
+        <p class="float-right">
+            <a href="#">Back to top</a>
+        </p>
+        <p>Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
+        <p>New to Bootstrap? <a href="../../">Visit the homepage</a> or read our <a href="../../getting-started/">getting
+            started guide</a>.</p>
+    </div>
+</footer>
 </body>
+</html>

@@ -1,23 +1,37 @@
-.content{
-     margin-top: 150px;
-     margin-left: 100px;
-     width: 300px; 
-
+:root {
+    --jumbotron-padding-y: 3rem;
 }
 
-.control-glyph {
-    float: right;
-    padding-left: 3;
-    color: #121FE6;
+.jumbotron {
+    padding-top: var(--jumbotron-padding-y);
+    padding-bottom: var(--jumbotron-padding-y);
+    margin-bottom: 0;
+    background-color: #fff;
+}
+@media (min-width: 768px) {
+    .jumbotron {
+        padding-top: calc(var(--jumbotron-padding-y) * 2);
+        padding-bottom: calc(var(--jumbotron-padding-y) * 2);
+    }
 }
 
-.control-button{
-    float: right;
-    border: none;
-    background: transparent;
-    outline : none;
+.jumbotron p:last-child {
+    margin-bottom: 0;
 }
 
-.input-group .date-time {
-    display : none;
+.jumbotron-heading {
+    font-weight: 300;
+}
+
+.jumbotron .container {
+    max-width: 40rem;
+}
+
+footer {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+footer p {
+    margin-bottom: .25rem;
 }

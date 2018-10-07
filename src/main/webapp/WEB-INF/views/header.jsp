@@ -4,6 +4,7 @@
 
 <%@ page contentType="text/html;charset=UTF-8" %>
 <fmt:bundle basename="messages_en_US">
+    <header>
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="row">
@@ -15,19 +16,15 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="<c:url value="/welcome.html" />"><fmt:message key="navbar.header.message"/> </a>
+                    <a class="navbar-brand" href="<c:url value="/lab.html" />">Lab Genie</a>
                 </div>
 
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav pull-right">
-                        <li><a href="<c:url value="/welcome.html" />">
-                            Dashboard</a></li>
-                        <li><a href="<c:url value="/users/manage.html" />"><fmt:message
-                                key="navbar.manage.user.message"/> </a></li>
-                        <li><a href="<c:url value="/instances/manage.html" />">
-                            <fmt:message key="navbar.manage.instance.message"/> </a></li>
-                        <li><a href="<c:url value="/j_spring_security_logout" />">
-                            <fmt:message key="navbar.signout.message"/> </a></li>
+                        <li><a href="<c:url value="/lab.html" />">Laboratory View</a></li>
+                        <li><a href="<c:url value="/users/manage.html" />">Upload New Instruments</a></li>
+                        <li><a href="<c:url value="/instances/manage.html" />">View Reports</a></li>
+                        <li><a href="<c:url value="/j_spring_security_logout" />">Log Out</a></li>
                     </ul>
                 </div>
             </div>
@@ -39,4 +36,5 @@
             <!--/.nav-collapse -->
         </div>
     </nav>
+    </header>
 </fmt:bundle>
