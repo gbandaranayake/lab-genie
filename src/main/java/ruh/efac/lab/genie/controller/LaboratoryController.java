@@ -14,6 +14,7 @@ package ruh.efac.lab.genie.controller;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -33,7 +34,8 @@ import java.util.List;
 public class LaboratoryController {
     private static final Logger logger = LogManager.getLogger(LaboratoryController.class);
 
-    InstrumentsRepository instrumentsRepository;
+    @Autowired
+    private InstrumentsRepository instrumentsRepository;
 
     @RequestMapping("/lab")
     public ModelAndView openEditSourceConfigurationPage() {
@@ -43,7 +45,11 @@ public class LaboratoryController {
 
     @RequestMapping(value = "/lab/instruments", produces = "application/json", method = RequestMethod.GET)
     public @ResponseBody List<Instrument> getInstrumentsForLab(@RequestParam(value = "labName") String labName) {
-        logger.info("Request received to open get the instruments list for lab name [{}]", labName);
+        logger.info("Request received to get the instruments list for lab name [{}]", labName);
         return instrumentsRepository.getInstruments(labName);
+    }
+
+    public void setInstrumentsRepository(InstrumentsRepository instrumentsRepository) {
+        this.instrumentsRepository = instrumentsRepository;
     }
 }

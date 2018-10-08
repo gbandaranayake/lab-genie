@@ -23,7 +23,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class InstrumentsRepositoryImpl implements InstrumentsRepository {
-    JdbcTemplate jdbcTemplate;
+    private JdbcTemplate jdbcTemplate;
 
     @Override
     public List<Instrument> getInstruments(String labName) {
@@ -47,8 +47,12 @@ public class InstrumentsRepositoryImpl implements InstrumentsRepository {
 
     private Instrument createInstrument(ResultSet resultSet, int rowIndex) throws SQLException {
         Instrument instrument = new Instrument(resultSet.getInt("id"), resultSet.getString("s_no"),
-                resultSet.getString("item_code"), resultSet.getString("category"),
-                resultSet.getString("name"), resultSet.getString("brand"));
+                resultSet.getString("item_code"), resultSet.getString("item_category"),
+                resultSet.getString("item"), resultSet.getString("brand"));
         return instrument;
+    }
+
+    public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
     }
 }
