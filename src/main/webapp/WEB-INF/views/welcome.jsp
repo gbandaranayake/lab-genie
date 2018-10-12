@@ -63,7 +63,7 @@
         <div class="container">
             <div class="row">
                 <div class="dropdown col-sm-4">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="lab-select"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Select Laboratory
                     </button>
@@ -77,7 +77,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1">Instrument Name:</span>
                     </div>
-                    <input type="text" class="form-control">
+                    <input type="text" id="search-box" class="form-control">
                 </div>
             </div>
             <div class="mt-2">
@@ -99,7 +99,7 @@
                 <th scope="col">Brand</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody id="table-content">
             <tr id="dummy-table-row"  style="display:none">
                 <td id="s-no">Mark</td>
                 <td id="item-name">Otto</td>

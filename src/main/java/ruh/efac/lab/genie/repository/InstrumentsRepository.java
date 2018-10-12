@@ -22,6 +22,8 @@ import java.util.List;
 public interface InstrumentsRepository {
     public List<Instrument> getInstruments(String labName);
 
+    public List<Instrument> getInstruments(String labName, String instrumentName);
+
     public void saveInstrument(Instrument instrument);
 
     public void deleteInstrument(Instrument instrument);

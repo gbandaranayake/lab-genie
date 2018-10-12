@@ -49,6 +49,13 @@ public class LaboratoryController {
         return instrumentsRepository.getInstruments(labName);
     }
 
+    @RequestMapping(value = "/lab/instruments/byname", produces = "application/json", method = RequestMethod.GET)
+    public @ResponseBody List<Instrument> getInstrumentsForLabByName(@RequestParam(value = "labName") String labName,
+                                                                     @RequestParam(value = "instrumentName") String instrumentName) {
+        logger.info("Request received to get the instruments list for lab name [{}]", labName);
+        return instrumentsRepository.getInstruments(labName, instrumentName);
+    }
+
     public void setInstrumentsRepository(InstrumentsRepository instrumentsRepository) {
         this.instrumentsRepository = instrumentsRepository;
     }

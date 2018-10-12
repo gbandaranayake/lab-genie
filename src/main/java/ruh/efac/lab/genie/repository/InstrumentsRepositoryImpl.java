@@ -31,6 +31,12 @@ public class InstrumentsRepositoryImpl implements InstrumentsRepository {
     }
 
     @Override
+    public List<Instrument> getInstruments(String labName, String instrumentName) {
+        return jdbcTemplate.query("select * from instrument where instrument.item like '%" + instrumentName + "%'",
+                this::createInstrument);
+    }
+
+    @Override
     public void saveInstrument(Instrument instrument) {
 
     }
