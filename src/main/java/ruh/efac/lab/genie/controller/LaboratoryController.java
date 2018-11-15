@@ -12,6 +12,7 @@
 
 package ruh.efac.lab.genie.controller;
 
+import com.google.gson.Gson;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,8 @@ import org.springframework.web.servlet.ModelAndView;
 import ruh.efac.lab.genie.domain.Instrument;
 import ruh.efac.lab.genie.repository.InstrumentsRepository;
 
+import javax.annotation.PostConstruct;
+import java.io.InputStreamReader;
 import java.util.Collections;
 import java.util.List;
 
@@ -37,10 +40,28 @@ public class LaboratoryController {
     @Autowired
     private InstrumentsRepository instrumentsRepository;
 
+    private List<String> labNames;
+
+    @PostConstruct
+    @SuppressWarnings("unchecked")
+    public void init() {
+        logger.info("Initializing the laboratory names list");
+        labNames = new Gson().fromJson(new InputStreamReader(LaboratoryController.class.getResourceAsStream("/lab-names.json")), List.class);
+        if (labNames == null) {
+            labNames = Collections.emptyList();
+        }
+    }
+
     @RequestMapping("/lab")
     public ModelAndView openEditSourceConfigurationPage() {
         logger.info("Request received to open the laboratory view page");
         return new ModelAndView("welcome", Collections.emptyMap());
+    }
+
+    @RequestMapping(value = "/lab/names", produces = "application/json")
+    public @ResponseBody List<String> getLaboratoryNames() {
+        logger.info("Request received to open the laboratory view page");
+        return labNames;
     }
 
     @RequestMapping(value = "/lab/instruments", produces = "application/json", method = RequestMethod.GET)

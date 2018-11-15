@@ -1,6 +1,6 @@
 (function (params) {
     var instruments;
-    $.ajax({
+    /*$.ajax({
         type : 'GET',
         url : 'lab/instruments?labName=test',
         success : function (d) {
@@ -11,8 +11,50 @@
         error : function (d) {
             window.alert("fetching list of instruments failed.")
         }
+    });*/
+
+    $.ajax({
+        type : 'GET',
+        url : 'lab/names',
+        success : function (d) {
+            $.each(d, function (i, val) {
+                var option = document.createElement('option');
+                option.label = val;
+                option.value = val;
+                option.text = val;
+                $('#lab-select').append(option);
+            });
+            initLabSelect();
+        },
+        error : function (d) {
+            window.alert("fetching list of laboratory names failed.")
+        }
     });
 
+    function initLabSelect() {
+        $('#lab-select').change(function () {
+            loadLabInventories(this.value);
+        });
+    }
+
+    function loadLabInventories(labName) {
+        $.ajax({
+            type : 'GET',
+            url : 'inventory?labName=' + labName,
+            success : function (d) {
+                $.each(d, function (i, val) {
+                    var option = document.createElement('option');
+                    option.label = val;
+                    option.value = val;
+                    option.text = val;
+                    $('#inventory-select').append(option);
+                });
+            },
+            error : function (d) {
+                window.alert("fetching list of inventories failed.")
+            }
+        });
+    }
 
     function drawInstruments(instruments) {
         var dummyRow = $('#dummy-table-row').clone();

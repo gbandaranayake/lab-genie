@@ -62,30 +62,24 @@
     <section class="jumbotron text-left">
         <div class="container">
             <div class="row">
-                <div class="dropdown col-sm-4">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="lab-select"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Select Laboratory
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Lab 1</a>
-                        <a class="dropdown-item" href="#">Lab 2</a>
-                        <a class="dropdown-item" href="#">Lab 3</a>
-                    </div>
+                <div class="form-group col-sm-6">
+                    <label id="lab-select-label" for="lab-select">Select Laboratory</label>
+                    <select class="form-control" id="lab-select">
+                        <option label="" value=""></option>
+                    </select>
                 </div>
-                <div class="input-group col-sm-8">
+                <div class="form-group col-sm-6">
+                    <label id="inventory-select-label" for="lab-select">Select Inventory</label>
+                    <select class="form-control" id="inventory-select">
+                        <option label="" value=""></option>
+                    </select>
+                </div>
+                <div class="input-group col-sm-12">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1">Instrument Name:</span>
                     </div>
                     <input type="text" id="search-box" class="form-control">
                 </div>
-            </div>
-            <div class="mt-2">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item active" aria-current="page">Name Of Lab</li>
-                    </ol>
-                </nav>
             </div>
         </div>
     </section>
