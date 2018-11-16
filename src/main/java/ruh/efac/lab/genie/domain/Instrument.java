@@ -33,7 +33,7 @@ public class Instrument {
     private String inventoryType;
     private String inventoryRegistryPage;
     private DateTime inventoryRegisteredDate;
-    private String inventryNo;
+    private String inventoryNo;
     private String serialNo;
 
     public Instrument(int id, String sno, String itemCode, String category, String name, String brand) {
@@ -105,8 +105,8 @@ public class Instrument {
         this.inventoryRegisteredDate = inventoryRegisteredDate;
     }
 
-    void setInventryNo(String inventryNo) {
-        this.inventryNo = inventryNo;
+    void setInventoryNo(String inventoryNo) {
+        this.inventoryNo = inventoryNo;
     }
 
     void setSerialNo(String serialNo) {
@@ -173,8 +173,8 @@ public class Instrument {
         return inventoryRegisteredDate;
     }
 
-    public String getInventryNo() {
-        return inventryNo;
+    public String getInventoryNo() {
+        return inventoryNo;
     }
 
     public String getSerialNo() {

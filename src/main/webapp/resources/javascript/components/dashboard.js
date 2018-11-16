@@ -1,17 +1,5 @@
 (function (params) {
     var instruments;
-    /*$.ajax({
-        type : 'GET',
-        url : 'lab/instruments?labName=test',
-        success : function (d) {
-            instruments = d;
-            drawInstruments(d);
-            initializeSearchBox();
-        },
-        error : function (d) {
-            window.alert("fetching list of instruments failed.")
-        }
-    });*/
 
     $.ajax({
         type : 'GET',
@@ -25,6 +13,7 @@
                 $('#lab-select').append(option);
             });
             initLabSelect();
+            initInventorySelect();
         },
         error : function (d) {
             window.alert("fetching list of laboratory names failed.")
@@ -58,6 +47,27 @@
             },
             error : function (d) {
                 window.alert("fetching list of inventories failed.")
+            }
+        });
+    }
+
+    function initInventorySelect() {
+        $('#inventory-select').change(function () {
+            getInstruments(this.value);
+        });
+    }
+
+    function getInstruments(inventoryNo) {
+        $.ajax({
+            type : 'GET',
+            url : 'instruments/list?inventoryNo=' + (inventoryNo || 0),
+            success : function (d) {
+                instruments = d;
+                drawInstruments(d);
+                initializeSearchBox();
+            },
+            error : function (d) {
+                window.alert("fetching list of instruments failed.")
             }
         });
     }

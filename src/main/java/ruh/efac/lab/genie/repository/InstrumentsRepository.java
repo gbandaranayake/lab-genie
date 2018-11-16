@@ -29,4 +29,6 @@ public interface InstrumentsRepository {
     public void deleteInstrument(Instrument instrument);
 
     public void addAll(List<Instrument> instruments);
+
+    List<Instrument> getInstrumentsByInventory(int inventoryNo);
 }

@@ -25,15 +25,23 @@ import java.util.List;
 public class InstrumentsRepositoryImpl implements InstrumentsRepository {
     private JdbcTemplate jdbcTemplate;
 
+    //todo check validity with the updated DB schema
     @Override
     public List<Instrument> getInstruments(String labName) {
-        return jdbcTemplate.query("select * from instrument", this::createInstrument);
+        return jdbcTemplate.query("select * from instrument", this::mapToInstrumentInst);
     }
 
+    //todo seems not required
     @Override
     public List<Instrument> getInstruments(String labName, String instrumentName) {
         return jdbcTemplate.query("select * from instrument where instrument.item like '%" + instrumentName + "%'",
-                this::createInstrument);
+                this::mapToInstrumentInst);
+    }
+
+    @Override
+    public List<Instrument> getInstrumentsByInventory(int inventoryNo) {
+        return jdbcTemplate.query("select * from instrument where instrument.inventory_no = ?",
+                this::mapToInstrumentInst, inventoryNo);
     }
 
     @Override
@@ -51,7 +59,7 @@ public class InstrumentsRepositoryImpl implements InstrumentsRepository {
 
     }
 
-    private Instrument createInstrument(ResultSet resultSet, int rowIndex) throws SQLException {
+    private Instrument mapToInstrumentInst(ResultSet resultSet, int rowIndex) throws SQLException {
         Instrument instrument = new Instrument(resultSet.getInt("id"), resultSet.getString("s_no"),
                 resultSet.getString("item_code"), resultSet.getString("item_category"),
                 resultSet.getString("item"), resultSet.getString("brand"));
