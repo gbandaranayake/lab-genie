@@ -19,9 +19,9 @@
         success : function (d) {
             $.each(d, function (i, val) {
                 var option = document.createElement('option');
-                option.label = val;
-                option.value = val;
-                option.text = val;
+                option.label = val.name;
+                option.value = val.id;
+                option.text = val.name;
                 $('#lab-select').append(option);
             });
             initLabSelect();
@@ -42,11 +42,17 @@
             type : 'GET',
             url : 'inventory?labName=' + labName,
             success : function (d) {
+                $('#inventory-select').empty();
+                var option = document.createElement('option');
+                option.label = '';
+                option.value = 0;
+                option.text = '';
+                $('#inventory-select').append(option);
                 $.each(d, function (i, val) {
                     var option = document.createElement('option');
-                    option.label = val;
-                    option.value = val;
-                    option.text = val;
+                    option.label = val.name;
+                    option.value = val.id;
+                    option.text = val.name;
                     $('#inventory-select').append(option);
                 });
             },

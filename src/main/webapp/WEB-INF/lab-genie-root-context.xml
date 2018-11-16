@@ -27,4 +27,8 @@
     <bean id="laboratoryRepository" class="ruh.efac.lab.genie.repository.LabRepoImpl">
         <property name="jdbcTemplate" ref="jdbcTemplate"/>
     </bean>
+
+    <bean id="inventoryRepository" class="ruh.efac.lab.genie.repository.InventoryRepoImpl">
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>
 </beans>

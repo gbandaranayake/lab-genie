@@ -17,21 +17,30 @@ package ruh.efac.lab.genie.controller;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import ruh.efac.lab.genie.domain.Inventory;
+import ruh.efac.lab.genie.repository.InventoryRepository;
 
-import java.util.Collections;
 import java.util.List;
 
 @Controller
 public class InventoryController {
     private static final Logger logger = LogManager.getLogger(LaboratoryController.class);
 
+    @Autowired
+    InventoryRepository inventoryRepository;
+
     @RequestMapping(value = "/inventory", produces = "application/json")
-    public @ResponseBody List<String> openEditSourceConfigurationPage(@RequestParam(value = "labName") String labName) {
-        logger.info("Request received to open the laboratory view page");
-        return Collections.singletonList("dummy");
+    public @ResponseBody List<Inventory> getAllInventories(@RequestParam(value = "labName") Integer labId) {
+        logger.info("Request received to get all inventories for lab id [{}]", labId);
+        return inventoryRepository.getAllForLab(labId);
+    }
+
+    public void setInventoryRepository(InventoryRepository inventoryRepository) {
+        this.inventoryRepository = inventoryRepository;
     }
 }

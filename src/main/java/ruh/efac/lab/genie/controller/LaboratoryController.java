@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import ruh.efac.lab.genie.domain.Instrument;
+import ruh.efac.lab.genie.domain.Laboratory;
 import ruh.efac.lab.genie.repository.InstrumentsRepository;
 import ruh.efac.lab.genie.repository.LaboratoryRepository;
 
@@ -36,22 +37,7 @@ public class LaboratoryController {
     private static final Logger logger = LogManager.getLogger(LaboratoryController.class);
 
     @Autowired
-    private InstrumentsRepository instrumentsRepository;
-
-    @Autowired
     private LaboratoryRepository laboratoryRepository;
-
-/*
-    @PostConstruct
-    @SuppressWarnings("unchecked")
-    public void init() {
-        logger.info("Initializing the laboratory names list");
-        labNames = new Gson().fromJson(new InputStreamReader(LaboratoryController.class.getResourceAsStream("/lab-names.json")), List.class);
-        if (labNames == null) {
-            labNames = Collections.emptyList();
-        }
-    }
-*/
 
     @RequestMapping("/lab")
     public ModelAndView openEditSourceConfigurationPage() {
@@ -60,18 +46,18 @@ public class LaboratoryController {
     }
 
     @RequestMapping(value = "/lab/names", produces = "application/json")
-    public @ResponseBody List<String> getLaboratoryNames() {
-        logger.info("Request received to open the laboratory view page");
+    public @ResponseBody List<Laboratory> getLaboratoryNames() {
+        logger.info("Request received to get list of all labs view page");
         return laboratoryRepository.getAllLabs();
     }
 
-    @RequestMapping(value = "/lab/instruments", produces = "application/json", method = RequestMethod.GET)
+    /*@RequestMapping(value = "/lab/instruments", produces = "application/json", method = RequestMethod.GET)
     public @ResponseBody List<Instrument> getInstrumentsForLab(@RequestParam(value = "labName") String labName) {
         logger.info("Request received to get the instruments list for lab name [{}]", labName);
         return instrumentsRepository.getInstruments(labName);
-    }
+    }*/
 
-    @RequestMapping(value = "/lab/instruments/byname", produces = "application/json", method = RequestMethod.GET)
+    /*@RequestMapping(value = "/lab/instruments/byname", produces = "application/json", method = RequestMethod.GET)
     public @ResponseBody List<Instrument> getInstrumentsForLabByName(@RequestParam(value = "labName") String labName,
                                                                      @RequestParam(value = "instrumentName") String instrumentName) {
         logger.info("Request received to get the instruments list for lab name [{}]", labName);
@@ -80,7 +66,7 @@ public class LaboratoryController {
 
     public void setInstrumentsRepository(InstrumentsRepository instrumentsRepository) {
         this.instrumentsRepository = instrumentsRepository;
-    }
+    }*/
 
     public void setLaboratoryRepository(LaboratoryRepository laboratoryRepository) {
         this.laboratoryRepository = laboratoryRepository;

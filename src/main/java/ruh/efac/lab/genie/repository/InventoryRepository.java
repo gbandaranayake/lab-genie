@@ -16,11 +16,11 @@ package ruh.efac.lab.genie.repository;
  */
 
 import org.springframework.stereotype.Repository;
-import ruh.efac.lab.genie.domain.Laboratory;
+import ruh.efac.lab.genie.domain.Inventory;
 
 import java.util.List;
 
 @Repository
-public interface LaboratoryRepository {
-    List<Laboratory> getAllLabs();
+public interface InventoryRepository {
+    List<Inventory> getAllForLab(int labName);
 }

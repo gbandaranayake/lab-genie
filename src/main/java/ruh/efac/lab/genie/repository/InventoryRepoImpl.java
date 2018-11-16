@@ -17,28 +17,30 @@ package ruh.efac.lab.genie.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import ruh.efac.lab.genie.domain.Laboratory;
+import ruh.efac.lab.genie.domain.Inventory;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-public class LabRepoImpl implements LaboratoryRepository {
-
+public class InventoryRepoImpl implements InventoryRepository{
     @Autowired
-    JdbcTemplate jdbcTemplate;
+    private JdbcTemplate jdbcTemplate;
 
     @Override
-    public List<Laboratory> getAllLabs() {
-        return jdbcTemplate.query("select * from laboratory", this::mapToLaboratory);
+    public List<Inventory> getAllForLab(int labId) {
+        return jdbcTemplate.query("Select * from inventory i join laboratory l where l.id = i.lab and l.id = ?",
+                this::mapToInventoryInst, labId);
     }
 
-    private Laboratory mapToLaboratory(ResultSet resultSet, int rowIndex) throws SQLException {
-        Laboratory laboratory = new Laboratory();
-        laboratory.setId(resultSet.getInt("id"));
-        laboratory.setName(resultSet.getString("name"));
-        laboratory.setDetails(resultSet.getString("details"));
-        return laboratory;
+    private Inventory mapToInventoryInst(ResultSet resultSet, int rowIndex) throws SQLException {
+        Inventory inventory = new Inventory();
+        inventory.setId(resultSet.getInt("id"));
+        inventory.setName(resultSet.getString("name"));
+        inventory.setDetails(resultSet.getString("details"));
+        inventory.setNo(resultSet.getInt("no"));
+        inventory.setLabId(resultSet.getInt("lab"));
+        return inventory;
     }
 
     public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
