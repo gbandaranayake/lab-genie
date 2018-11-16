@@ -12,7 +12,6 @@
 
 package ruh.efac.lab.genie.controller;
 
-import com.google.gson.Gson;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,9 +23,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import ruh.efac.lab.genie.domain.Instrument;
 import ruh.efac.lab.genie.repository.InstrumentsRepository;
+import ruh.efac.lab.genie.repository.LaboratoryRepository;
 
-import javax.annotation.PostConstruct;
-import java.io.InputStreamReader;
 import java.util.Collections;
 import java.util.List;
 
@@ -40,8 +38,10 @@ public class LaboratoryController {
     @Autowired
     private InstrumentsRepository instrumentsRepository;
 
-    private List<String> labNames;
+    @Autowired
+    private LaboratoryRepository laboratoryRepository;
 
+/*
     @PostConstruct
     @SuppressWarnings("unchecked")
     public void init() {
@@ -51,6 +51,7 @@ public class LaboratoryController {
             labNames = Collections.emptyList();
         }
     }
+*/
 
     @RequestMapping("/lab")
     public ModelAndView openEditSourceConfigurationPage() {
@@ -61,7 +62,7 @@ public class LaboratoryController {
     @RequestMapping(value = "/lab/names", produces = "application/json")
     public @ResponseBody List<String> getLaboratoryNames() {
         logger.info("Request received to open the laboratory view page");
-        return labNames;
+        return laboratoryRepository.getAllLabs();
     }
 
     @RequestMapping(value = "/lab/instruments", produces = "application/json", method = RequestMethod.GET)
@@ -79,5 +80,9 @@ public class LaboratoryController {
 
     public void setInstrumentsRepository(InstrumentsRepository instrumentsRepository) {
         this.instrumentsRepository = instrumentsRepository;
+    }
+
+    public void setLaboratoryRepository(LaboratoryRepository laboratoryRepository) {
+        this.laboratoryRepository = laboratoryRepository;
     }
 }
