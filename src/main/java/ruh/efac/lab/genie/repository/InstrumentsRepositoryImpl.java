@@ -16,6 +16,7 @@ package ruh.efac.lab.genie.repository;
  */
 
 import org.springframework.jdbc.core.JdbcTemplate;
+import ruh.efac.lab.genie.domain.Comment;
 import ruh.efac.lab.genie.domain.Instrument;
 
 import java.sql.ResultSet;
@@ -24,6 +25,7 @@ import java.util.List;
 
 public class InstrumentsRepositoryImpl implements InstrumentsRepository {
     private JdbcTemplate jdbcTemplate;
+    private CommentsRepository commentsRepository;
 
     //todo check validity with the updated DB schema
     @Override
@@ -64,10 +66,16 @@ public class InstrumentsRepositoryImpl implements InstrumentsRepository {
                 resultSet.getString("item_code"), resultSet.getString("item_category"),
                 resultSet.getString("item"), resultSet.getString("brand"));
         instrument.setSerialNo(resultSet.getString("serial_no"));
+        List<Comment> allCommentsForEquipment = commentsRepository.getAllCommentsForEquipment(instrument.getId());
+        instrument.setComments(allCommentsForEquipment);
         return instrument;
     }
 
     public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
+    }
+
+    public void setCommentsRepository(CommentsRepository commentsRepository) {
+        this.commentsRepository = commentsRepository;
     }
 }

@@ -13,6 +13,12 @@
         },
         'brand': function (input, instruments) {
             return instruments.filter((d) => (d['brand'] || '').startsWith(input));
+        },
+        'item-code-checkbox': function (input, instruments) {
+            return instruments.filter((d) => (d['itemCode'] || '').startsWith(input));
+        },
+        'category-checkbox': function (input, instruments) {
+            return instruments.filter((d) => (d['category'] || '').startsWith(input));
         }
     };
 
@@ -97,12 +103,26 @@
             var sNo = newRow.children('#s-no');
             var itemName = newRow.children('#item-name');
             var itemBrand = newRow.children('#item-brand');
+            var itemCode = newRow.children('#item-code');
+            var category = newRow.children('#item-category');
+            var comment = newRow.children('#comment');
+            var actions = newRow.children('#actions');
             sNo.html(d.sno);
             itemName.html(d.name);
             itemBrand.html(d.brand);
+            itemCode.html(d.itemCode);
+            category.html(d.category);
+            if (d.comments && d.comments.length() > 0) {
+                comment.html(d.comments[0]);
+            }
+            actions.html('actions will go here');
             sNo.attr('id', 's-no-' + i);
             itemName.attr('id', 'item-name-' + i);
             itemBrand.attr('id', 'item-brand-' + i);
+            itemCode.attr('id', 'item-code-' + i);
+            category.attr('id', 'category' + i);
+            actions.attr('id', 'actions-' + i);
+            comment.attr('id', 'comment-' + i);
             newRow.attr('id', 'row-' + i);
             $('#search-results-table').append(newRow);
             newRow.show();

@@ -23,7 +23,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-8 col-md-7 py-4">
-                    <h4 class="text-white">Lab Genie</h4>
+                    <h4 class="text-white">Department of EIE Inventory Management System</h4>
                     <p class="text-muted">Add some information about the album below, the author, or any other
                         background context. Make it a few sentences long so folks can pick up some informative tidbits.
                         Then, link them off to some social networking sites or contact information.</p>
@@ -47,7 +47,7 @@
                     <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
                     <circle cx="12" cy="13" r="4"></circle>
                 </svg>
-                <strong>Lab Genie</strong>
+                <strong>Department of EIE Inventory Management System</strong>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader"
                     aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
@@ -80,19 +80,34 @@
                     </div>
                     <input type="text" id="search-box" class="form-control">
                 </div>
-                <div class="input-group col-sm-4">
+                <div class="input-group col-sm-3">
                     <div class="checkbox">
                         <label><input type="checkbox" id="s-no-check">S No</label>
                     </div>
                 </div>
-                <div class="input-group col-sm-4">
+                <div class="input-group col-sm-3">
                     <div class="checkbox">
                         <label><input type="checkbox" id="name">Name</label>
                     </div>
                 </div>
-                <div class="input-group col-sm-4">
+                <div class="input-group col-sm-3">
                     <div class="checkbox">
                         <label><input type="checkbox" id="brand">Brand</label>
+                    </div>
+                </div>
+                <div class="input-group col-sm-3">
+                    <div class="checkbox">
+                        <label><input type="checkbox" id="item-code-checkbox">Item code</label>
+                    </div>
+                </div>
+                <div class="input-group col-sm-3">
+                    <div class="checkbox">
+                        <label><input type="checkbox" id="category-checkbox">Category</label>
+                    </div>
+                </div>
+                <div class="input-group col-sm-3">
+                    <div class="checkbox">
+                        <label><input type="checkbox" id="actions-checkbox">Actions</label>
                     </div>
                 </div>
             </div>
@@ -100,12 +115,16 @@
     </section>
 
     <div class="container-fluid" id="search-results">
-        <table class="table" id="search-results-table">
+        <table class="table table-bordered" id="search-results-table">
             <thead class="thead-light">
             <tr>
                 <th scope="col">Serial No</th>
                 <th scope="col">Item</th>
                 <th scope="col">Brand</th>
+                <th scope="col">Item Code</th>
+                <th scope="col">Category</th>
+                <th scope="col">Comment</th>
+                <th scope="col">Actions</th>
             </tr>
             </thead>
             <tbody id="table-content">
@@ -113,6 +132,10 @@
                 <td id="s-no"></td>
                 <td id="item-name"></td>
                 <td id="item-brand"></td>
+                <td id="item-code"></td>
+                <td id="item-category"></td>
+                <td id="comment"></td>
+                <td id="actions"></td>
             </tr>
             </tbody>
         </table>

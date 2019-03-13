@@ -17,8 +17,10 @@ package ruh.efac.lab.genie.domain;
 
 import org.joda.time.DateTime;
 
+import java.util.List;
+
 public class Instrument {
-    private int id;
+    private long id;
     private String sno;
     private String assetCode;
     private String itemCode;
@@ -35,8 +37,9 @@ public class Instrument {
     private DateTime inventoryRegisteredDate;
     private String inventoryNo;
     private String serialNo;
+    private List<Comment> comments;
 
-    public Instrument(int id, String sno, String itemCode, String category, String name, String brand) {
+    public Instrument(long id, String sno, String itemCode, String category, String name, String brand) {
         this.id = id;
         this.sno = sno;
         this.itemCode = itemCode;
@@ -113,7 +116,7 @@ public class Instrument {
         this.serialNo = serialNo;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
@@ -179,5 +182,37 @@ public class Instrument {
 
     public String getSerialNo() {
         return serialNo;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
+    @Override
+    public String toString() {
+        return "Instrument{" +
+                "id=" + id +
+                ", sno='" + sno + '\'' +
+                ", assetCode='" + assetCode + '\'' +
+                ", itemCode='" + itemCode + '\'' +
+                ", category='" + category + '\'' +
+                ", name='" + name + '\'' +
+                ", brand='" + brand + '\'' +
+                ", supplier='" + supplier + '\'' +
+                ", localInvoicePrice=" + localInvoicePrice +
+                ", totalCost=" + totalCost +
+                ", bills='" + bills + '\'' +
+                ", afterSalesServices='" + afterSalesServices + '\'' +
+                ", inventoryType='" + inventoryType + '\'' +
+                ", inventoryRegistryPage='" + inventoryRegistryPage + '\'' +
+                ", inventoryRegisteredDate=" + inventoryRegisteredDate +
+                ", inventoryNo='" + inventoryNo + '\'' +
+                ", serialNo='" + serialNo + '\'' +
+                ", comments=" + comments +
+                '}';
     }
 }
