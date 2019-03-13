@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/bootstrap/css/bootstrap-grid.css"/>"/>
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/bootstrap/css/bootstrap-reboot.css"/>"/>
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/dashboard.css"/>"/>
+    <link href="<c:url value="/resources/css/fontawesome/css/all.css"/>" rel="stylesheet"> <!--load all styles -->
     <script src="<c:url value="/resources/javascript/jquery-3.3.1.js"/> "></script>
     <script src="<c:url value="/resources/bootstrap/js/popper.js"/> "></script>
     <script src="<c:url value="/resources/bootstrap/js/bootstrap.js"/> "></script>
@@ -14,6 +15,7 @@
     <script src="<c:url value="/resources/bootstrap/js/holder.min.js"/> "></script>
     <script src="<c:url value="/resources/javascript/d3.js"/> "></script>
     <script src="<c:url value="/resources/javascript/components/dashboard.js"/> "></script>
+    <script src="<c:url value="/resources/javascript/popper.min.js"/> "></script>
     <title>Lab Genie</title>
 </head>
 <body>
@@ -124,32 +126,47 @@
                 <th scope="col">Item Code</th>
                 <th scope="col">Category</th>
                 <th scope="col">Comment</th>
-                <th scope="col">Actions</th>
+                <th scope="col" style="text-align:center">Actions</th>
             </tr>
             </thead>
             <tbody id="table-content">
-            <tr id="dummy-table-row"  style="display:none">
+            <tr id="dummy-table-row" style="display:none">
                 <td id="s-no"></td>
                 <td id="item-name"></td>
                 <td id="item-brand"></td>
                 <td id="item-code"></td>
                 <td id="item-category"></td>
                 <td id="comment"></td>
-                <td id="actions"></td>
+                <td id="actions">
+                    <div class="container" id="actions-dev" style="text-align:center">
+                        <a href="#" id="view" data-toggle="tooltip" data-placement="bottom" title="View">
+                            <i class="fas fa-clipboard-list"></i>
+                        </a>
+                        <a href="#" id="delete" data-toggle="tooltip" data-placement="bottom" title="Delete">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                        <a href="#" id="reserve" data-toggle="tooltip" data-placement="bottom" title="Reserve">
+                            <i class="fas fa-hourglass-half"></i>
+                        </a>
+                        <a href="#" id="comments" data-toggle="tooltip" data-placement="bottom" title="Comment">
+                            <i class="fas fa-comment-dots"></i>
+                        </a>
+                    </div>
+                </td>
             </tr>
             </tbody>
         </table>
     </div>
 
-<footer class="text-muted">
-    <div class="container">
-        <p class="float-right">
-            <a href="#">Back to top</a>
-        </p>
-        <p>Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
-        <p>New to Bootstrap? <a href="../../">Visit the homepage</a> or read our <a href="../../getting-started/">getting
-            started guide</a>.</p>
-    </div>
-</footer>
+    <footer class="text-muted">
+        <div class="container">
+            <p class="float-right">
+                <a href="#">Back to top</a>
+            </p>
+            <p>Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
+            <p>New to Bootstrap? <a href="../../">Visit the homepage</a> or read our <a href="../../getting-started/">getting
+                started guide</a>.</p>
+        </div>
+    </footer>
 </body>
 </html>

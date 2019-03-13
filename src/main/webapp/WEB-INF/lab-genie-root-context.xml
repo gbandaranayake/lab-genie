@@ -20,8 +20,13 @@
         <property name="order" value="2"/>
     </bean>
 
+    <bean id="commentsRepository" class="ruh.efac.lab.genie.repository.CommentsRepositoryImpl">
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>
+
     <bean id="instrumentsRepository" class="ruh.efac.lab.genie.repository.InstrumentsRepositoryImpl">
         <property name="jdbcTemplate" ref="jdbcTemplate"/>
+        <property name="commentsRepository" ref="commentsRepository"/>
     </bean>
 
     <bean id="laboratoryRepository" class="ruh.efac.lab.genie.repository.LabRepoImpl">

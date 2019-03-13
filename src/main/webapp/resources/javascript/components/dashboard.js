@@ -107,15 +107,15 @@
             var category = newRow.children('#item-category');
             var comment = newRow.children('#comment');
             var actions = newRow.children('#actions');
+            initializeRowActions(actions, d, i);
             sNo.html(d.sno);
             itemName.html(d.name);
             itemBrand.html(d.brand);
             itemCode.html(d.itemCode);
             category.html(d.category);
-            if (d.comments && d.comments.length() > 0) {
+            if (d.comments && d.comments.length > 0) {
                 comment.html(d.comments[0]);
             }
-            actions.html('actions will go here');
             sNo.attr('id', 's-no-' + i);
             itemName.attr('id', 'item-name-' + i);
             itemBrand.attr('id', 'item-brand-' + i);
@@ -127,6 +127,54 @@
             $('#search-results-table').append(newRow);
             newRow.show();
         });
+
+    }
+
+    function initializeRowActions(actionTd, d, i) {
+        var actionsDev = actionTd.children('#actions-dev');
+        var viewAction = actionsDev.children('#view');
+        var deleteAction = actionsDev.children('#delete');
+        var reserveAction = actionsDev.children('#reserve');
+        var commentAction = actionsDev.children('#comment');
+        deleteAction.tooltip();
+        reserveAction.tooltip();
+        viewAction.tooltip();
+        commentAction.tooltip();
+        viewAction.on('click', function (event) {
+            event.preventDefault();
+            drawEquipmentViewDialog(d);
+        });
+        deleteAction.click(function (event) {
+            event.preventDefault();
+            drawEquipmentDeleteDialog(d);
+        });
+        reserveAction.click(function (event) {
+            event.preventDefault();
+            drawEquipmentReserveDialog(d);
+        });
+        commentAction.click(function (event) {
+            event.preventDefault();
+            drawEquipmentCommentDialog(d);
+        });
+        viewAction.attr('id', 'view-equipment-' + i);
+        deleteAction.attr('id', 'delete-equipment-' + i);
+        reserveAction.attr('id', 'reserve-equipment-' + i);
+        commentAction.attr('id', 'comment-equipment-' + i);
+    }
+
+    function drawEquipmentViewDialog(equipment) {
+        console.log(equipment);
+    }
+
+    function drawEquipmentReserveDialog(equipment) {
+
+    }
+
+    function drawEquipmentDeleteDialog(equipment) {
+
+    }
+
+    function drawEquipmentCommentDialog(equipment) {
 
     }
 
