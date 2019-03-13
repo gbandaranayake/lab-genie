@@ -163,7 +163,9 @@
     }
 
     function drawEquipmentViewDialog(equipment) {
-        console.log(equipment);
+        $('#view-instrument-modal-title').html(equipment.name);
+        populateInstrumentViewModalData(equipment);
+        $('#dummy-view-instrument-modal').modal({'show' : true});
     }
 
     function drawEquipmentReserveDialog(equipment) {
@@ -176,6 +178,25 @@
 
     function drawEquipmentCommentDialog(equipment) {
 
+    }
+
+    function populateInstrumentViewModalData(equipment) {
+        $('#id-view').val(equipment.id);
+        $('#s-no-view').val(equipment.sno);
+        $('#asset-code-view').val(equipment.assetCode);
+        $('#item-code-view').val(equipment.itemCode);
+        $('#category-view').val(equipment.category);
+        $('#brand-view').val(equipment.brand);
+        $('#supplier-view').val(equipment.supplier);
+        $('#local-invoice-price-view').val(equipment.localInvoicePrice);
+        $('#total-cost-view').val(equipment.totalCost);
+        $('#bills-view').val(equipment.bills);
+        $('#after-sales-service-view').val(equipment.afterSalesService);
+        $('#inventory-type-view').val(equipment.inventoryType);
+        $('#inventory-registry-page-view').val(equipment.inventoryRegistryPage);
+        $('#inventory-registered-date-view').val(equipment.inventoryRegisteredDate);
+        $('#inventory-no-view').val(equipment.inventoryNo);
+        $('#serial-no-view').val(equipment.serialNo);
     }
 
     function initializeSearchBox() {

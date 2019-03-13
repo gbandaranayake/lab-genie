@@ -158,6 +158,90 @@
         </table>
     </div>
 
+    <div class="modal" id="dummy-view-instrument-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="view-instrument-modal-title"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="view-instrument-modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="id-view" class="">ID</label>
+                            <input type="text" class="form-control" id="id-view">
+                        </div>
+                        <div class="form-group">
+                            <label for="s-no-view">S No</label>
+                            <input type="text" class="form-control" id="s-no-view">
+                        </div>
+                        <div class="form-group">
+                            <label for="asset-code-view">Asset Code</label>
+                            <input type="text" class="form-control" id="asset-code-view">
+                        </div>
+                        <div class="form-group">
+                            <label for="item-code-view">Item Code</label>
+                            <input type="text" class="form-control" id="item-code-view">
+                        </div>
+                        <div class="form-group">
+                            <label for="category-view">Category</label>
+                            <input type="text" class="form-control" id="category-view">
+                        </div>
+                        <div class="form-group">
+                            <label for="brand-view">Brand</label>
+                            <input type="text" class="form-control" id="brand-view">
+                        </div>
+                        <div class="form-group">
+                            <label for="supplier-view">Supplier</label>
+                            <input type="text" class="form-control" id="supplier-view">
+                        </div>
+                        <div class="form-group">
+                            <label for="local-invoice-price-view">Local Invoice Price</label>
+                            <input type="text" class="form-control" id="local-invoice-price-view">
+                        </div>
+                        <div class="form-group">
+                            <label for="total-cost-view">Total Coset</label>
+                            <input type="text" class="form-control" id="total-cost-view">
+                        </div>
+                        <div class="form-group">
+                            <label for="bills-view">Bills</label>
+                            <input type="text" class="form-control" id="bills-view">
+                        </div>
+                        <div class="form-group">
+                            <label for="after-sales-services-view">After Sales Services</label>
+                            <input type="text" class="form-control" id="after-sales-services-view">
+                        </div>
+                        <div class="form-group">
+                            <label for="inventory-type-view">Inventory Type</label>
+                            <input type="text" class="form-control" id="inventory-type-view">
+                        </div>
+                        <div class="form-group">
+                            <label for="inventory-registry-page-view">Inventory Registry Page</label>
+                            <input type="text" class="form-control" id="inventory-registry-page-view">
+                        </div>
+                        <div class="form-group">
+                            <label for="inventory-registered-date-view">Inventory Registered Date</label>
+                            <input type="text" class="form-control" id="inventory-registered-date-view">
+                        </div>
+                        <div class="form-group">
+                            <label for="inventory-no-view">Inventory No</label>
+                            <input type="text" class="form-control" id="inventory-no-view">
+                        </div>
+                        <div class="form-group">
+                            <label for="serial-no-view">Serial No</label>
+                            <input type="text" class="form-control" id="serial-no-view">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <footer class="text-muted">
         <div class="container">
             <p class="float-right">
