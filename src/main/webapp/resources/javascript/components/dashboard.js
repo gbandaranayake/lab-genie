@@ -1,5 +1,20 @@
 (function (params) {
     var instruments;
+    var activeFilterNames = [];
+    var searchFiltersByName = {
+        's-no-check': function (input, instruments) {
+            return instruments.filter((d) => (d['sno'] || '').startsWith(input));
+        },
+        'serial-no': function (input, instruments) {
+            return instruments.filter((d) => (d['serialNo'] || '').startsWith(input));
+        },
+        'name': function (input, instruments) {
+            return instruments.filter((d) => (d['name'] || '').startsWith(input));
+        },
+        'brand': function (input, instruments) {
+            return instruments.filter((d) => (d['brand'] || '').startsWith(input));
+        }
+    };
 
     $.ajax({
         type : 'GET',
@@ -14,6 +29,8 @@
             });
             initLabSelect();
             initInventorySelect();
+            initializeSearchBox();
+            initCheckBoxes();
         },
         error : function (d) {
             window.alert("fetching list of laboratory names failed.")
@@ -64,7 +81,6 @@
             success : function (d) {
                 instruments = d;
                 drawInstruments(d);
-                initializeSearchBox();
             },
             error : function (d) {
                 window.alert("fetching list of instruments failed.")
@@ -97,17 +113,19 @@
     function initializeSearchBox() {
         $('#search-box').on('keyup', function () {
             var searchTerm = this.value;
-            $.ajax({
-                type : 'GET',
-                url : 'lab/instruments/byname?labName=test&instrumentName=' + searchTerm,
-                success : function (d) {
-                    instruments = d;
-                    drawInstruments(d);
-                },
-                error : function (d) {
-                    window.alert("fetching list of instruments failed.")
-                }
-            });
+            let activeSearchFilters = $.map(activeFilterNames, (elem, index) => searchFiltersByName[elem]);
+            var filteredInstruments = $.map(activeSearchFilters, (elem, index) => elem(searchTerm, instruments));
+            drawInstruments(filteredInstruments);
         });
+    }
+
+    function initCheckBoxes() {
+        $('#search-criteria input:checkbox').each((i, checkbox) => $(checkbox).change(function () {
+            if (this.checked) {
+                activeFilterNames[activeFilterNames.length] = this.attributes['id'].value;
+            } else {
+                activeFilterNames = activeFilterNames.filter((val, i, arr) => val !== this.attributes['id'].value);
+            }
+        }));
     }
 })();

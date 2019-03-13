@@ -49,67 +49,67 @@ public class Instrument {
         this.id = id;
     }
 
-    void setSno(String sno) {
+    public void setSno(String sno) {
         this.sno = sno;
     }
 
-    void setAssetCode(String assetCode) {
+    public void setAssetCode(String assetCode) {
         this.assetCode = assetCode;
     }
 
-    void setItemCode(String itemCode) {
+    public void setItemCode(String itemCode) {
         this.itemCode = itemCode;
     }
 
-    void setCategory(String category) {
+    public void setCategory(String category) {
         this.category = category;
     }
 
-    void setName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    void setBrand(String brand) {
+    public void setBrand(String brand) {
         this.brand = brand;
     }
 
-    void setSupplier(String supplier) {
+    public void setSupplier(String supplier) {
         this.supplier = supplier;
     }
 
-    void setLocalInvoicePrice(double localInvoicePrice) {
+    public void setLocalInvoicePrice(double localInvoicePrice) {
         this.localInvoicePrice = localInvoicePrice;
     }
 
-    void setTotalCost(double totalCost) {
+    public void setTotalCost(double totalCost) {
         this.totalCost = totalCost;
     }
 
-    void setBills(String bills) {
+    public void setBills(String bills) {
         this.bills = bills;
     }
 
-    void setAfterSalesServices(String afterSalesServices) {
+    public void setAfterSalesServices(String afterSalesServices) {
         this.afterSalesServices = afterSalesServices;
     }
 
-    void setInventoryType(String inventoryType) {
+    public void setInventoryType(String inventoryType) {
         this.inventoryType = inventoryType;
     }
 
-    void setInventoryRegistryPage(String inventoryRegistryPage) {
+    public void setInventoryRegistryPage(String inventoryRegistryPage) {
         this.inventoryRegistryPage = inventoryRegistryPage;
     }
 
-    void setInventoryRegisteredDate(DateTime inventoryRegisteredDate) {
+    public void setInventoryRegisteredDate(DateTime inventoryRegisteredDate) {
         this.inventoryRegisteredDate = inventoryRegisteredDate;
     }
 
-    void setInventoryNo(String inventoryNo) {
+    public void setInventoryNo(String inventoryNo) {
         this.inventoryNo = inventoryNo;
     }
 
-    void setSerialNo(String serialNo) {
+    public void setSerialNo(String serialNo) {
         this.serialNo = serialNo;
     }
 

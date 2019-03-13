@@ -61,7 +61,7 @@
 
     <section class="jumbotron text-left">
         <div class="container">
-            <div class="row">
+            <div class="row" id="search-criteria">
                 <div class="form-group col-sm-6">
                     <label id="lab-select-label" for="lab-select">Select Laboratory</label>
                     <select class="form-control" id="lab-select">
@@ -74,11 +74,26 @@
                         <option label="" value=""></option>
                     </select>
                 </div>
-                <div class="input-group col-sm-12">
+                <div class="input-group col-sm-12 mb-2">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1">Instrument Name:</span>
                     </div>
                     <input type="text" id="search-box" class="form-control">
+                </div>
+                <div class="input-group col-sm-4">
+                    <div class="checkbox">
+                        <label><input type="checkbox" id="s-no-check">S No</label>
+                    </div>
+                </div>
+                <div class="input-group col-sm-4">
+                    <div class="checkbox">
+                        <label><input type="checkbox" id="name">Name</label>
+                    </div>
+                </div>
+                <div class="input-group col-sm-4">
+                    <div class="checkbox">
+                        <label><input type="checkbox" id="brand">Brand</label>
+                    </div>
                 </div>
             </div>
         </div>
@@ -95,9 +110,9 @@
             </thead>
             <tbody id="table-content">
             <tr id="dummy-table-row"  style="display:none">
-                <td id="s-no">Mark</td>
-                <td id="item-name">Otto</td>
-                <td id="item-brand">@mdo</td>
+                <td id="s-no"></td>
+                <td id="item-name"></td>
+                <td id="item-brand"></td>
             </tr>
             </tbody>
         </table>

@@ -35,7 +35,7 @@ public class InstrumentsController {
     private InstrumentsRepository instrumentsRepository;
 
     @RequestMapping(value = "/instruments/list", produces = "application/json")
-    public @ResponseBody List<Instrument> getLaboratoryNames(@RequestParam(name = "inventoryNo") Integer inventoryNo) {
+    public @ResponseBody List<Instrument> getInstrumentsForInventory(@RequestParam(name = "inventoryNo") Integer inventoryNo) {
         logger.info("Request received to get list of all instruments for inventoryNo [{}]", inventoryNo);
         return instrumentsRepository.getInstrumentsByInventory(inventoryNo);
     }

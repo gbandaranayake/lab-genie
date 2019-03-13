@@ -63,6 +63,7 @@ public class InstrumentsRepositoryImpl implements InstrumentsRepository {
         Instrument instrument = new Instrument(resultSet.getInt("id"), resultSet.getString("s_no"),
                 resultSet.getString("item_code"), resultSet.getString("item_category"),
                 resultSet.getString("item"), resultSet.getString("brand"));
+        instrument.setSerialNo(resultSet.getString("serial_no"));
         return instrument;
     }
 
