@@ -37,6 +37,6 @@ public class LoginController {
         if (message != null) {
             model.addAttribute("message", "Logout Successful");
         }
-        return "index";
+        return "login";
     }
 }

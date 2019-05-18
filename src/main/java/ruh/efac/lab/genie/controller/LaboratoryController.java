@@ -42,7 +42,7 @@ public class LaboratoryController {
     @RequestMapping("/lab")
     public ModelAndView openEditSourceConfigurationPage() {
         logger.info("Request received to open the laboratory view page");
-        return new ModelAndView("welcome", Collections.emptyMap());
+        return new ModelAndView("search", Collections.emptyMap());
     }
 
     @RequestMapping(value = "/lab/names", produces = "application/json")
