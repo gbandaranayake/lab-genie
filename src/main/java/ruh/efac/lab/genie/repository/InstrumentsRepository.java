@@ -20,15 +20,17 @@ import ruh.efac.lab.genie.domain.Instrument;
 import java.util.List;
 
 public interface InstrumentsRepository {
-    public List<Instrument> getInstruments(String labName);
+    List<Instrument> getInstruments(String labName);
 
-    public List<Instrument> getInstruments(String labName, String instrumentName);
+    List<Instrument> getInstruments(String labName, String instrumentName);
 
-    public void saveInstrument(Instrument instrument);
+    void saveInstrument(Instrument instrument);
 
-    public void deleteInstrument(Instrument instrument);
+    void deleteInstrumentById(Instrument instrument);
 
-    public void addAll(List<Instrument> instruments);
+    void addAll(List<Instrument> instruments);
 
     List<Instrument> getInstrumentsByInventory(int inventoryNo);
+
+    void deleteInstrumentById(long instrumentId);
 }

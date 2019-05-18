@@ -202,7 +202,7 @@
                             <input type="text" class="form-control" id="local-invoice-price-view">
                         </div>
                         <div class="form-group">
-                            <label for="total-cost-view">Total Coset</label>
+                            <label for="total-cost-view">Total Cost</label>
                             <input type="text" class="form-control" id="total-cost-view">
                         </div>
                         <div class="form-group">
@@ -234,6 +234,43 @@
                             <input type="text" class="form-control" id="serial-no-view">
                         </div>
                     </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="dummy-delete-equipment-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="delete-equipment-modal-title"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="delete-equipment-modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="delete-equipment-confirm" class="btn btn-success" data-dismiss="modal">Confirm</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="dummy-notification-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="notification-modal-title"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="notification-modal-body">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

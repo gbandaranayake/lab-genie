@@ -47,12 +47,17 @@ public class InstrumentsRepositoryImpl implements InstrumentsRepository {
     }
 
     @Override
+    public void deleteInstrumentById(long instrumentId) {
+        jdbcTemplate.update("delete from instrument where instrument.id = ?", instrumentId);
+    }
+
+    @Override
     public void saveInstrument(Instrument instrument) {
 
     }
 
     @Override
-    public void deleteInstrument(Instrument instrument) {
+    public void deleteInstrumentById(Instrument instrument) {
 
     }
 

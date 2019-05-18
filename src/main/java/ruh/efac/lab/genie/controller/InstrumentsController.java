@@ -19,9 +19,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import ruh.efac.lab.genie.domain.Instrument;
 import ruh.efac.lab.genie.repository.InstrumentsRepository;
 
@@ -38,6 +36,16 @@ public class InstrumentsController {
     public @ResponseBody List<Instrument> getInstrumentsForInventory(@RequestParam(name = "inventoryNo") Integer inventoryNo) {
         logger.info("Request received to get list of all instruments for inventoryNo [{}]", inventoryNo);
         return instrumentsRepository.getInstrumentsByInventory(inventoryNo);
+    }
+
+    @RequestMapping(value = "/instruments/delete", produces = "text/html", method = RequestMethod.DELETE)
+    public @ResponseBody void deleteInstrument(@RequestParam(name = "instrumentId") Long instrumentId) {
+        logger.info("Request received to delete instrument with id [{}]", instrumentId);
+        try {
+            instrumentsRepository.deleteInstrumentById(instrumentId);
+        } catch (Exception e) {
+            logger.error("Exception occurred while deleting instrument with id [{}]", instrumentId, e);
+        }
     }
 
     public void setInstrumentsRepository(InstrumentsRepository instrumentsRepository) {

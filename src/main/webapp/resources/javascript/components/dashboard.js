@@ -173,7 +173,38 @@
     }
 
     function drawEquipmentDeleteDialog(equipment) {
+        $('#delete-equipment-modal-title').html('Delete ' + equipment.name);
+        $('#delete-equipment-modal-body').html('Are you sure you want to delete ' + equipment.name + ' ' +
+            'instrument from the system?');
+        initDeleteInstrumentConfirmButton(equipment);
+        $('#dummy-delete-equipment-modal').modal({'show' : true});
+    }
 
+    function initDeleteInstrumentConfirmButton(equipment) {
+        $('#delete-equipment-confirm').on('click', function (event) {
+            $.ajax({
+                type : 'DELETE',
+                url : 'instruments/delete?instrumentId=' + equipment.id,
+                success : function () {
+                    drawNotificationDialog({
+                        title: equipment.name, message: 'Deleted ' + equipment.name +
+                            ' successfully!'
+                    });
+                },
+                error : function () {
+                    drawNotificationDialog({
+                        title: equipment.name, message: 'Deletion of ' + equipment.name +
+                            'failed due to internal error.'
+                    });
+                }
+            });
+        });
+    }
+
+    function drawNotificationDialog(notifInfo) {
+        $('#notification-modal-title').html(notifInfo.title);
+        $('#notification-modal-body').html(notifInfo.message);
+        $('#dummy-notification-modal').modal({'show' : true});
     }
 
     function drawEquipmentCommentDialog(equipment) {
