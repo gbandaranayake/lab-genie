@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/bootstrap/css/bootstrap-grid.css"/>"/>
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/bootstrap/css/bootstrap-reboot.css"/>"/>
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/dashboard.css"/>"/>
-    <link href="<c:url value="/resources/css/fontawesome/css/all.css"/>" rel="stylesheet"> <!--load all styles -->
+    <link href="<c:url value="/resources/css/all.css"/>" rel="stylesheet" type="text/css"> <!--load all styles -->
     <script src="<c:url value="/resources/javascript/jquery-3.3.1.js"/> "></script>
     <script src="<c:url value="/resources/bootstrap/js/popper.js"/> "></script>
     <script src="<c:url value="/resources/bootstrap/js/bootstrap.js"/> "></script>
