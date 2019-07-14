@@ -10,7 +10,7 @@
  * property rights in these materials.
  */
 
-package ruh.efac.lab.genie.repository;
+package ruh.efac.lab.genie.repository.impl;
 /*
  * Created by GayanB
  */
@@ -18,12 +18,13 @@ package ruh.efac.lab.genie.repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import ruh.efac.lab.genie.domain.Inventory;
+import ruh.efac.lab.genie.repository.InventoryRepository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-public class InventoryRepoImpl implements InventoryRepository{
+public class InventoryRepoImpl implements InventoryRepository {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 

@@ -10,7 +10,7 @@
  * property rights in these materials.
  */
 
-package ruh.efac.lab.genie.repository;
+package ruh.efac.lab.genie.repository.impl;
 /*
  * Created by GayanB on
  */
@@ -18,12 +18,13 @@ package ruh.efac.lab.genie.repository;
 import org.joda.time.DateTime;
 import org.springframework.jdbc.core.JdbcTemplate;
 import ruh.efac.lab.genie.domain.Comment;
+import ruh.efac.lab.genie.repository.CommentsRepository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-public class CommentsRepositoryImpl implements CommentsRepository{
+public class CommentsRepositoryImpl implements CommentsRepository {
     private JdbcTemplate jdbcTemplate;
 
     @Override

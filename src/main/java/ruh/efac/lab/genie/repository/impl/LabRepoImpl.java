@@ -10,7 +10,7 @@
  * property rights in these materials.
  */
 
-package ruh.efac.lab.genie.repository;
+package ruh.efac.lab.genie.repository.impl;
 /*
  * Created by GayanB
  */
@@ -18,6 +18,7 @@ package ruh.efac.lab.genie.repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import ruh.efac.lab.genie.domain.Laboratory;
+import ruh.efac.lab.genie.repository.LaboratoryRepository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
